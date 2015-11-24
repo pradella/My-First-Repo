@@ -25,11 +25,11 @@ Para obter a data de início, término e horas contratadas de um projeto, foi cr
 
 ```sql
 -- obtém dados do contrato (inputados na tela de edição do projeto)
-SELECT ID_PROJETO, NU_CONTRATO_HORA, DT_CONTRATO_INICIO, DT_CONTRATO_TEMRINO
+SELECT ID_PROJETO, NU_CONTRATO_HORA, DT_CONTRATO_INICIO, DT_CONTRATO_TERMINO
 FROM vPROJETO_HORASCONTRATADAS_RESUMO
 
 -- obtém dados do cronograma (obtidos nas tarefas do cronograma criado para o projeto)
-SELECT ID_PROJETO, NU_CRONOGRAMA_HORA, DT_CRONOGRAMA_INICIO, DT_CRONOGRAMA_TEMRINO
+SELECT ID_PROJETO, NU_CRONOGRAMA_HORA, DT_CRONOGRAMA_INICIO, DT_CRONOGRAMA_TERMINO
 FROM vPROJETO_HORASCONTRATADAS_RESUMO
 
 -- obtém os dados de uma das duas fontes, priorizando contrato; se não achar, pega do cronograma
