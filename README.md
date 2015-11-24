@@ -3,6 +3,12 @@ My First GIT Repository
 
 This is my first line trying to document this software.
 
+## Índice
+
+[Cargo atual do usuário](#Cargo atual do usuário)  
+[Data de início, término e horas contratadas do Projeto](#Data de início, término e horas contratadas do Projeto)  
+[Status atual do projeto e última data de mudança](#Status atual do projeto e última data de mudança)  
+
 #### Cargo atual do usuário
 
 A partir de novembro/2015, foi criada uma tabela para controle do histórico dos cargos dos usuários (USUARIOCARGO_HISTORICO). Para obter o cargo atual do usuário, considero o campo DT_CARGO_TERMINO IS NULL (ou seja, não há data de término do cargo, significa que ele está trabalhando ainda na SOU, e neste cargo). Essa informação do cargo atual pode ser das seguintes formas:
