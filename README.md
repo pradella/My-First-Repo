@@ -19,13 +19,22 @@ SELECT * FROM USUARIOCARGO_HISTORICO WHERE DT_CARGO_TERMINO IS NULL
 ```
 
 
-#### Data de início e término do Projeto
+#### Data de início, término e horas contratadas do Projeto
 
-Para obter a data de início e término de um projeto, obtenha pelo seguinte comando:
+Para obter a data de início, término e horas contratadas de um projeto, foi criada uma view que centraliza tais infromações: vPROJETO_HORASCONTRATADAS_RESUMO. Veja abaixo alguns exemplos:
 
 ```sql
-SELECT ID_PROJETO, DT_INICIO_CONTRATO_OU_CRONOGRAMA, DT_TERMINO_CONTRATO_OU_CRONOGRAMA
-FROM vPROJETO
+-- obtém dados do contrato (inputados na tela de edição do projeto)
+SELECT ID_PROJETO, NU_CONTRATO_HORA, DT_CONTRATO_INICIO, DT_CONTRATO_TEMRINO
+FROM vPROJETO_HORASCONTRATADAS_RESUMO
+
+-- obtém dados do cronograma (obtidos nas tarefas do cronograma criado para o projeto)
+SELECT ID_PROJETO, NU_CRONOGRAMA_HORA, DT_CRONOGRAMA_INICIO, DT_CRONOGRAMA_TEMRINO
+FROM vPROJETO_HORASCONTRATADAS_RESUMO
+
+-- obtém os dados de uma das duas fontes, priorizando contrato; se não achar, pega do cronograma
+SELECT ID_PROJETO, NU_HORACONTRATADA_CONTRATO_OU_CRONOGRAMA, DT_INICIO_CONTRATO_OU_CRONOGRAMA, DT_TERMINO_CONTRATO_OU_CRONOGRAMA
+FROM vPROJETO_HORASCONTRATADAS_RESUMO
 ```
 
 
