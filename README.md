@@ -27,3 +27,22 @@ Para obter a data de início e término de um projeto, obtenha pelo seguinte com
 SELECT ID_PROJETO, DT_INICIO_CONTRATO_OU_CRONOGRAMA, DT_TERMINO_CONTRATO_OU_CRONOGRAMA
 FROM vPROJETO
 ```
+
+
+#### Status atual do projeto e última data de mudança
+
+O status do projeto pode ser obtido na tabela PROJETOSTATUS.
+Foi criada uma tabela para logar as mudanças de status: PROJETOSTATUS_LOG.
+Assim, para obter o status atual do projeto, bem como a ultima data de mudança, utilize o comando abaixo:
+
+```sql
+SELECT ID_PROJETO, ID_PROJETOSTATUS, CS_PROJETOSTATUS_NOME, DT_PROJETOSTATUS_CHANGED, DT_PROJETOSTATUS_CHANGED_DAYSAGO
+FROM vPROJETO
+```
+
+Exemplo: 
+- Filtrando apenas os projetos finalizados
+```sql
+SELECT ID_PROJETO, ID_PROJETOSTATUS, CS_PROJETOSTATUS_NOME, DT_PROJETOSTATUS_CHANGED, DT_PROJETOSTATUS_CHANGED_DAYSAGO 
+FROM vPROJETO WHERE ID_PROJETOSTATUS = 4
+```
