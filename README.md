@@ -8,7 +8,7 @@ This is my first line trying to document this software.
 [Cargo atual do usuário](https://github.com/pradella/My-First-Repo#cargo-atual-do-usuario)  
 [Data de início, término e horas contratadas do Projeto](https://github.com/pradella/My-First-Repo#data-de-início-término-e-horas-contratadas-do-projeto)  
 [Status atual do projeto e última data de mudança](https://github.com/pradella/My-First-Repo#status-atual-do-projeto-e-última-data-de-mudança)
-[Horas contratadas](https://github.com/pradella/My-First-Repo#horas-contratadas)  
+[Horas contratadas](https://github.com/pradella/My-First-Repo/#horas-contratadas)  
 
 #### Cargo atual do usuario
 
