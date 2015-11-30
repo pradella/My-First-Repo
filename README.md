@@ -113,3 +113,5 @@ NU_CRONOGRAMA_HORA,
 NU_ENTREGUE_HORA 
 FROM fHORAS_CONTRATADAS_MESAMES(1583) 
 ```
+
+Importante: os campos NU_PROJETO_HORACONTRATADA, DT_PROJETO_CONTRATOINICIO, DT_PROJETO_CONTRATOTERMINO da tabela PROJETO foram inutilizados. O motivo é que agora essa informação é controlada mês a mês, o que requereu a criação da tabela PROJETO_HORASCONTRATADAS. Esses campos ainda existem, portanto, muita atenção.
