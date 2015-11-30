@@ -7,7 +7,8 @@ This is my first line trying to document this software.
 
 [Cargo atual do usuário](https://github.com/pradella/My-First-Repo#cargo-atual-do-usuario)  
 [Data de início, término e horas contratadas do Projeto](https://github.com/pradella/My-First-Repo#data-de-início-término-e-horas-contratadas-do-projeto)  
-[Status atual do projeto e última data de mudança](https://github.com/pradella/My-First-Repo#status-atual-do-projeto-e-última-data-de-mudança)  
+[Status atual do projeto e última data de mudança](https://github.com/pradella/My-First-Repo#status-atual-do-projeto-e-última-data-de-mudança)
+[Horas contratadas](https://github.com/pradella/My-First-Repo#horas-contratadas)  
 
 #### Cargo atual do usuario
 
@@ -60,4 +61,55 @@ Exemplo:
 ```sql
 SELECT ID_PROJETO, ID_PROJETOSTATUS, CS_PROJETOSTATUS_NOME, DT_PROJETOSTATUS_CHANGED, DT_PROJETOSTATUS_CHANGED_DAYSAGO 
 FROM vPROJETO WHERE ID_PROJETOSTATUS = 4
+```
+
+
+#### Horas contratadas
+
+O controle de horas contratadas é feito de duas maneiras:
+- via cronograma (obtido da somatória do campo NU_TAREFA_TRABALHO*8 - 1 dia = 8 horas)
+- via input manual (obtido da somatória do campo NU_HORASCONTRATADAS da tabela PROJETO_HORASCONTRATADAS)
+
+Para facilitar a obtenção dessa informação, foi criada a view vPROJETO_HORASCONTRATADAS_RESUMO, pois quando o projeto possui essas duas informações cadastradas (cronograma e input manual), essa view automaticamente traz uma informação, priorizando o input manual. 
+
+```sql
+SELECT
+NU_CONTRATO_HORA,
+DT_CONTRATO_INICIO,
+DT_CONTRATO_TERMINO, 
+NU_CRONOGRAMA_HORA,
+DT_CRONOGRAMA_INICIO,
+DT_CRONOGRAMA_TERMINO,
+NU_HORACONTRATADA_CONTRATO_OU_CRONOGRAMA,
+DT_INICIO_CONTRATO_OU_CRONOGRAMA,
+DT_TERMINO_CONTRATO_OU_CRONOGRAMA
+FROM vPROJETO_HORASCONTRATADAS_RESUMO
+```
+
+Para finalidade de consolidação de dados, também foram criadas duas funções que trazem essa informação quebrada por mês e/ou dia:
+
+```sql
+SELECT 
+ID_PROJETO, 
+AREA, 
+SUBAREA, 
+ANO, 
+MES, 
+DATA, 
+HORAS_CONTRATADAS 
+FROM fHORAS_CONTRATADAS('2015-01-01', '2015-12-31') 
+OPTION (MAXRECURSION 0)
+```
+
+Também foi criada uma função que traz o consolidado mês a mês de horas contratadas informando o ID do projeto como parâmetro. Repare que ele traz as colunas de hora contratada de input manual (NU_CONTRATO_HORA) e crongorama (NU_CRONOGRAMA_HORA), onde é papel da aplicação definir qual delas irá utilizar.
+
+```sql
+SELECT 
+ID_PROJETO, 
+ANO, 
+MES, 
+NU_CONTRATO_HORA, 
+NU_CRONOGRAMA_HORA, 
+NU_ENTREGUE_HORA 
+FROM fHORAS_CONTRATADAS_MESAMES(1583) 
 ```
